@@ -1,0 +1,44 @@
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2017-12-26 16:09:28
+project setup --topLevelPackage com.cr.labels
+jpa setup --provider HIBERNATE --database POSTGRES 
+// [failed] entity jpa --class  ~.domain.Translation
+entity jpa --class  ~.domain.LabelTranslations
+// [failed] field string --fieldName language
+field string --fieldName transalationLanguage
+entity jpa --class  ~.domain.Label
+field string --fieldName labelKey
+field string --fieldName labelValue
+// [failed] field set --fieldName translations --type ~.LabelTranslations --mappedBy label
+field set --fieldName translations --type ~.domain.LabelTranslations --mappedBy label
+repository jpa --entity ~.domain.Label --interface ~.repository.LabelRepository
+service --entity ~.domain.Label --repository ~.repository.LabelRepository --interface ~.service.api.LabelService --class ~.service.impl.LabelServiceImpl
+web mvc setup
+web mvc view setup --type THYMELEAF 
+web mvc controller --controller ~.web.LabelControler --entity ~.domain.Label --service ~.service.api.LabelService --responseType THYMELEAF 
+quit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2017-12-27 09:35:00
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2017-12-28 10:51:46
+quit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2017-12-28 10:52:03
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2017-12-28 10:52:08
+security setup
+quit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2017-12-28 10:53:20
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2017-12-28 15:04:22
+entity jpa --class ~.domain.Attachment
+field string --fieldName fileName
+field string --fieldName createdBy
+field file --fieldName file --contentType ZIP
+quit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2017-12-28 15:10:38
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2017-12-28 15:21:00
+repository jpa --all --package com.cr.labels.repository
+service --all --apiPackage com.cr.labels.service --implPackage com.cr.labels.service.impl
+web mvc controller --all --package com.cr.labels.web
+quit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2017-12-28 15:54:12
+// Spring Roo 2.0.0.M2 [rev 003b42c] log opened at 2017-12-29 10:02:24
+web mvc controller --controller ~.web.AttachmentController --responseType THYMELEAF 
+web mvc controller --controller ~.web.LabelTranslationController --responseType THYMELEAF 
+quit
+// Spring Roo 2.0.0.M2 [rev 003b42c] log closed at 2017-12-29 10:04:29
